@@ -77,3 +77,21 @@ class TwoLayerNet:
         grads['b1'] = np.sum(da1, axis=0)
 
         return grads
+
+
+net = TwoLayerNet(input_size=784, hidden_size=100, output_size=10)
+print(net.params['W1'].shape) # (784, 100)
+print(net.params['b1'].shape) # (100,)
+print(net.params['W2'].shape) # (100, 10)
+print(net.params['b2'].shape) # (10,)
+x = np.random.rand(100, 784) # ダミーの入力データ(100枚分)
+t = np.random.rand(100, 10)
+y = net.predict(x)
+
+grads = net.gradient(x, t)
+print(grads['W1'].shape) # (784, 100)
+print(grads['b1'].shape) # (100,)
+print(grads['W2'].shape) # (100, 10)
+print(grads['b2'].shape) # (10,)
+
+print(y)
